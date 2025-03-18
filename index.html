@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MichelDev | Projektowanie stron & grafiki komputerowej</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">MichelDev</a>
+            </div>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="#home" class="nav-link">Strona Główna</a></li>
+                    <li><a href="#services" class="nav-link">Usługi</a></li>
+                    <li><a href="#projects" class="nav-link">Projekty</a></li>
+                    <li><a href="#about" class="nav-link">O mnie</a></li>
+                    <li><a href="#contact" class="nav-link">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="split-hero">
+            <div class="hero-text-side">
+                <div class="hero-text-container fade-in">
+                    <div class="hero-tag">Frontend & Design</div>
+                    <h1 class="hero-heading">
+                        <span class="hero-word">Tworzę wyjątkowe projekty wizualne.</span>
+                    </h1>
+                    <div class="hero-description">
+                        <p>Specjalizuję się w <a style="color: #3a86ff;">projektowaniu graficznym i tworzeniu stron internetowych.</a> Pomagam markom wyróżnić się poprzez kompleksowe rozwiązania wizualne. Sprawdź sam i skontaktuj się ze mną!</p>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">Porozmawiajmy o projekcie</a>
+                        <a href="#projects" class="btn btn-text">
+                            <span>Zobacz portfolio</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual-side">
+                <div class="hero-gradient-mesh fade-in">
+                    <div class="gradient-mesh-container">
+                        <div class="mesh-item"></div>
+                        <div class="mesh-item"></div>
+                        <div class="mesh-item"></div>
+                        <div class="mesh-item"></div>
+                    </div>
+                </div>
+                <div class="interactive-particles">
+                    <canvas id="particleCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="scroll-text">Scroll</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Moje usługi</h2>
+                <p>Kompleksowe rozwiązania dla Twojego biznesu</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card glass-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3>Projektowanie graficzne</h3>
+                    <ul>
+                        <li>Projektowanie logotypów</li>
+                        <li>Identyfikacja wizualna</li>
+                        <li>Branding</li>
+                        <li>Materiały marketingowe</li>
+                        <li>Grafiki społecznościowe</li>
+                    </ul>
+                </div>
+
+                <div class="service-card glass-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Tworzenie stron internetowych</h3>
+                    <ul>
+                        <li>Strony one-page</li>
+                        <li>Strony multi-page</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>Responsywny design</li>
+                        <li>Optymalizacja wydajności</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Moje projekty</h2>
+                <p>Wybrane prace z mojego portfolio</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card glass-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Strona dla restauracji</h3>
+                        <p>Responsywna strona z eleganckim designem</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Branding dla start-upu</h3>
+                        <p>Kompleksowy projekt identyfikacji wizualnej</p>
+                        <div class="project-tags">
+                            <span>Logo</span>
+                            <span>Branding</span>
+                            <span>UI Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Portfolio fotografa</h3>
+                        <p>Minimalistyczna galeria z efektami wizualnymi</p>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder"></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Logo dla sklepu online</h3>
+                        <p>Nowoczesny znak graficzny z identyfikacją</p>
+                        <div class="project-tags">
+                            <span>Logo</span>
+                            <span>Branding</span>
+                            <span>Print</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <div class="about-placeholder glass-card"></div>
+                </div>
+                <div class="about-text fade-in">
+                    <h2>O mnie</h2>
+                    <p>Jestem pasjonatem projektowania i tworzenia niezwykłych doświadczeń cyfrowych. Specjalizuję się w tworzeniu atrakcyjnych wizualnie i funkcjonalnych stron internetowych oraz wysokiej jakości grafik.</p>
+                    <p>Z ponad 5-letnim doświadczeniem w branży, łączę kreatywność z technicznymi umiejętnościami, aby dostarczać rozwiązania, które nie tylko świetnie wyglądają, ale również realizują cele biznesowe moich klientów.</p>
+                    <div class="about-skills">
+                        <div class="skill">
+                            <span>HTML & CSS</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span>JavaScript</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span>Design graficzny</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span>UI/UX Design</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Kontakt</h2>
+                <p>Zapraszam do współpracy</p>
+            </div>
+            <div class="contact-container-new fade-in">
+                <div class="contact-card glass-card">
+                    <div class="contact-card-inner">
+                        <div class="contact-header">
+                            <i class="fas fa-handshake contact-icon"></i>
+                            <h3>Rozpocznijmy współpracę</h3>
+                            <p>Jestem otwarty na nowe projekty i wyzwania. Skontaktuj się ze mną, aby omówić szczegóły.</p>
+                        </div>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <p>kontakt@portfolio.pl</p>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <p>+48 123 456 789</p>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>Warszawa, Polska</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-availability">
+                            <h4>Dostępność</h4>
+                            <p>Poniedziałek - Piątek: 9:00 - 17:00</p>
+                            <p>Typowy czas odpowiedzi: 24 godziny</p>
+                        </div>
+                        
+                        <div class="social-section">
+                            <h4>Znajdź mnie online</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        
+                        <a href="mailto:kontakt@portfolio.pl" class="btn btn-primary contact-cta">Napisz do mnie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Portfolio. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
