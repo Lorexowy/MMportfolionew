@@ -574,11 +574,11 @@ nav ul li a.active::after {
 
 .project-link {
     position: absolute;
-    top: 15px;
+    bottom: 15px; /* Zmiana z top na bottom */
     right: 15px;
     width: 45px;
     height: 45px;
-    background: rgba(58, 134, 255, 0.2);
+    background: rgba(58, 134, 255, 0.75); /* Zwiększona nieprzezroczystość dla lepszej widoczności */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 50%;
@@ -588,14 +588,14 @@ nav ul li a.active::after {
     color: white;
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    opacity: 0; /* Początkowa przezroczystość */
-    transform: translateY(10px); /* Początkowe przesunięcie w dół */
+    opacity: 1;
+    transform: translateY(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:hover .project-link {
-    opacity: 1;
     transform: translateY(0);
 }
 
@@ -603,6 +603,61 @@ nav ul li a.active::after {
     background: var(--accent-color);
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+}
+
+/* Wsparcie dla dodawania obrazów projektów */
+.project-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2a70e0 0%, #7c4dff 100%);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+/* Efekt powiększenia obrazu przy najechaniu */
+.project-card:hover .project-placeholder {
+    transform: scale(1.05);
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.02);
+}
+
+/* Style dla przyciemnienia obrazu dla lepszej widoczności przycisku */
+.project-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%; /* Gradient tylko na dolnej części obrazu */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+    pointer-events: none; /* Aby nie przeszkadzało w klikaniu przycisków */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-image::after {
+    opacity: 1;
+}
+
+/* Dodatkowe style responsywne dla przycisku na urządzeniach mobilnych */
+@media (max-width: 576px) {
+    .project-link {
+        opacity: 0.9; /* Większa widoczność na urządzeniach mobilnych */
+        transform: translateY(0); /* Bez początkowego przesunięcia */
+        width: 50px; /* Nieco większy dla łatwiejszego kliknięcia */
+        height: 50px;
+    }
 }
 
 /* About Section */
