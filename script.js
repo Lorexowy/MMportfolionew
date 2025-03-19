@@ -276,8 +276,8 @@ document.addEventListener("DOMContentLoaded", function() {
  | |  | | | (__| | | | (_| | |_| |  __/\\ V / 
  |_|  |_|_|\\___|_| |_|\\__,_|____/ \\___| \\_/  
             </pre>
-            <p>Welcome to my interactive portfolio terminal.</p>
-            <p>Type <span class="cmd">help</span> to see available commands or click on any highlighted command.</p>
+            <p>Witaj w moim interaktywnym terminalu portfolio!</p>
+            <p>Wpisz <span class="cmd">help</span> aby zobaczyć dostępne komendy lub kliknij na dowolną podświetloną komendę.</p>
         </div>
     `;
 
@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <span class="terminal-button minimize"></span>
                     <span class="terminal-button maximize"></span>
                 </div>
-                <div class="terminal-title">developer@portfolio ~ </div>
+                <div class="terminal-title">MichelDev@portfolio ~ </div>
             </div>
             <div class="terminal-body">
                 <div class="terminal-output">
@@ -315,24 +315,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const commands = [
         {
             command: "whoami",
-            response: `<div class="term-response-title">About Me:</div>
-                       <p>Full-Stack Developer & Designer with a passion for creating exceptional digital experiences.</p>
-                       <p>I specialize in crafting visually appealing and functional websites that help brands stand out.</p>`
+            response: `<div class="term-response-title">O mnie:</div>
+                       <p>Jestem programistą fontend i projektantem grafiki komputerowej z pasją do tworzenia wyjątkowych doświadczeń wizualnych.</p>
+                       <p>Specjalizuję się w tworzeniu atrakcyjnych wizualnie stron internetowych oraz grafik które pomagają markom wyróżnić się.</p>`
         },
         {
             command: "contact",
-            response: `<div class="term-response-title">Contact Info:</div>
-                       <p><span class="term-highlight">Email:</span> kontakt@portfolio.pl</p>
-                       <p><span class="term-highlight">Location:</span> Kraków, Poland</p>
-                       <p><span class="term-highlight">Hours:</span> Monday - Friday, 9:00 - 17:00</p>`
+            response: `<div class="term-response-title">Informacje kontaktowe:</div>
+                       <p><span class="term-highlight">Email:</span> mateusz.michel7@gmail.com</p>
+                       <p><span class="term-highlight">Lokalizacja:</span> Kraków, Polska</p>
+                       <p><span class="term-highlight">Godziny pracy:</span> Poniedziałek - Piątek, 9:00 - 17:00</p>`
         },
         {
             command: "help",
-            response: `<div class="term-response-title">Available Commands:</div>
-                       <p><span class="cmd">whoami</span> - About me information</p>
-                       <p><span class="cmd">contact</span> - View contact information</p>
-                       <p><span class="cmd">clear</span> - Reset the terminal screen</p>
-                       <p><span class="cmd">help</span> - Display this help message</p>`
+            response: `<div class="term-response-title">Dostępne komendy:</div>
+                       <p><span class="cmd">whoami</span> - Informacje o mnie</p>
+                       <p><span class="cmd">contact</span> - Informacje kontaktowe</p>
+                       <p><span class="cmd">clear</span> - Zresetuj ekran terminala</p>
+                       <p><span class="cmd">help</span> - Wyświetl dostępne komendy</p>`
         },
         {
             command: "clear",
@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (command) {
             addResponse(command.response, command.reset);
         } else {
-            addResponse(`<span class="term-error">Error: Command not found: ${commandText}</span><br>Type <span class="cmd">help</span> to see available commands.`);
+            addResponse(`<span class="term-error">Błąd: Nie znaleziono komendy: ${commandText}</span><br>Wpisz <span class="cmd">help</span> aby zobaczyć dostępne komendy.`);
         }
         
         // Wyczyść input
