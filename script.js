@@ -260,3 +260,163 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Sprawdź czy element about-placeholder istnieje
+    const aboutPlaceholder = document.querySelector('.about-placeholder');
+    if (!aboutPlaceholder) return;
+
+    // Przechowaj początkową zawartość ekranu powitalnego
+    const welcomeScreen = `
+        <div class="term-welcome">
+            <pre class="term-ascii-art">
+  __  __ _      _        _ ____             
+ |  \\/  (_) ___| |__  __| |  _ \\  _____   __
+ | |\\/| | |/ __| '_ \\/ _\` | | | |/ _ \\ \\ / /
+ | |  | | | (__| | | | (_| | |_| |  __/\\ V / 
+ |_|  |_|_|\\___|_| |_|\\__,_|____/ \\___| \\_/  
+            </pre>
+            <p>Welcome to my interactive portfolio terminal.</p>
+            <p>Type <span class="cmd">help</span> to see available commands or click on any highlighted command.</p>
+        </div>
+    `;
+
+    // Stwórz kontener terminala
+    aboutPlaceholder.innerHTML = `
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="terminal-button close"></span>
+                    <span class="terminal-button minimize"></span>
+                    <span class="terminal-button maximize"></span>
+                </div>
+                <div class="terminal-title">developer@portfolio ~ </div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-output">
+                    ${welcomeScreen}
+                </div>
+                <div class="terminal-command-line">
+                    <span class="terminal-prompt">guest@portfolio:~$</span>
+                    <span class="terminal-input"></span>
+                    <span class="terminal-cursor"></span>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Wybierz elementy DOM
+    const terminalOutput = document.querySelector('.terminal-output');
+    const terminalInput = document.querySelector('.terminal-input');
+    const terminalCursor = document.querySelector('.terminal-cursor');
+    const terminalBody = document.querySelector('.terminal-body');
+
+    // Zdefiniuj komendy i odpowiedzi
+    const commands = [
+        {
+            command: "whoami",
+            response: `<div class="term-response-title">About Me:</div>
+                       <p>Full-Stack Developer & Designer with a passion for creating exceptional digital experiences.</p>
+                       <p>I specialize in crafting visually appealing and functional websites that help brands stand out.</p>`
+        },
+        {
+            command: "contact",
+            response: `<div class="term-response-title">Contact Info:</div>
+                       <p><span class="term-highlight">Email:</span> kontakt@portfolio.pl</p>
+                       <p><span class="term-highlight">Location:</span> Kraków, Poland</p>
+                       <p><span class="term-highlight">Hours:</span> Monday - Friday, 9:00 - 17:00</p>`
+        },
+        {
+            command: "help",
+            response: `<div class="term-response-title">Available Commands:</div>
+                       <p><span class="cmd">whoami</span> - About me information</p>
+                       <p><span class="cmd">contact</span> - View contact information</p>
+                       <p><span class="cmd">clear</span> - Reset the terminal screen</p>
+                       <p><span class="cmd">help</span> - Display this help message</p>`
+        },
+        {
+            command: "clear",
+            response: welcomeScreen,
+            reset: true
+        }
+    ];
+
+    // Dodaj odpowiedź do terminala
+    function addResponse(text, reset = false) {
+        if (reset) {
+            terminalOutput.innerHTML = text;
+            return;
+        }
+        
+        // Dodaj poprzednią komendę do historii
+        const commandElement = document.createElement('div');
+        commandElement.classList.add('terminal-history-line');
+        commandElement.innerHTML = `<span class="terminal-prompt">guest@portfolio:~$</span> ${terminalInput.textContent}`;
+        terminalOutput.appendChild(commandElement);
+        
+        // Dodaj odpowiedź
+        const responseElement = document.createElement('div');
+        responseElement.classList.add('terminal-response');
+        responseElement.innerHTML = text;
+        terminalOutput.appendChild(responseElement);
+        
+        // Przewiń do dołu
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    // Wykonaj komendę
+    function executeCommand(commandText) {
+        const command = commands.find(cmd => cmd.command === commandText);
+        
+        if (command) {
+            addResponse(command.response, command.reset);
+        } else {
+            addResponse(`<span class="term-error">Error: Command not found: ${commandText}</span><br>Type <span class="cmd">help</span> to see available commands.`);
+        }
+        
+        // Wyczyść input
+        terminalInput.textContent = '';
+    }
+
+    // Efekt pojawiania się terminala
+    setTimeout(() => {
+        aboutPlaceholder.classList.add('terminal-loaded');
+    }, 300);
+
+    // Nasłuchuj kliknięcia w terminal - umożliwia wpisywanie własnych komend
+    aboutPlaceholder.addEventListener('click', function() {
+        terminalCursor.classList.add('active');
+    });
+    
+    // Użyj delegacji zdarzeń dla klikalnych komend zamiast dodawania wielu słuchaczy
+    terminalOutput.addEventListener('click', function(e) {
+        // Sprawdź czy kliknięto na element z klasą 'cmd'
+        const cmdElement = e.target.closest('.cmd');
+        if (cmdElement) {
+            const commandText = cmdElement.textContent;
+            terminalInput.textContent = commandText;
+            setTimeout(() => {
+                executeCommand(commandText);
+            }, 100);
+        }
+    });
+    
+    // Obsługa wpisywania przez użytkownika
+    document.addEventListener('keydown', function(e) {
+        if (!terminalCursor.classList.contains('active')) return;
+        
+        if (e.key === 'Enter') {
+            const commandText = terminalInput.textContent.trim();
+            if (commandText) {
+                executeCommand(commandText);
+            }
+        } else if (e.key === 'Backspace') {
+            const text = terminalInput.textContent;
+            if (text.length > 0) {
+                terminalInput.textContent = text.substring(0, text.length - 1);
+            }
+        } else if (e.key.length === 1) {
+            terminalInput.textContent += e.key;
+        }
+    });
+});
