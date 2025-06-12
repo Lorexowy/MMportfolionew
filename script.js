@@ -71,40 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
         scrollBar.style.transformOrigin = 'left center';
     }
     
-    // Advanced Magnetic Effect with performance optimization
-    function addMagneticEffect() {
-        const magneticElements = document.querySelectorAll('.magnetic');
-        
-        magneticElements.forEach(element => {
-            let magneticTicking = false;
-            
-            element.addEventListener('mousemove', function(e) {
-                if (!magneticTicking) {
-                    requestAnimationFrame(() => {
-                        const rect = element.getBoundingClientRect();
-                        const x = e.clientX - rect.left - rect.width / 2;
-                        const y = e.clientY - rect.top - rect.height / 2;
-                        
-                        const moveX = x * 0.2;
-                        const moveY = y * 0.2;
-                        
-                        // Use transform3d for GPU acceleration
-                        element.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
-                        element.style.transition = 'transform 0.1s ease-out';
-                        
-                        magneticTicking = false;
-                    });
-                    magneticTicking = true;
-                }
-            }, { passive: true });
-            
-            element.addEventListener('mouseleave', function() {
-                element.style.transform = 'translate3d(0px, 0px, 0)';
-                element.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            });
-        });
-    }
-    
     // Optimized text animation for hero section
     const heroWords = document.querySelectorAll('.hero-word');
     
@@ -302,7 +268,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Run initial checks with optimization
     requestAnimationFrame(() => {
         checkAnimations();
-        addMagneticEffect();
         initParallaxEffects();
     });
 
@@ -359,8 +324,7 @@ document.addEventListener("DOMContentLoaded", function() {
         resizeTimeout = setTimeout(function() {
             if (!resizeTicking) {
                 requestAnimationFrame(() => {
-                    // Reinitialize effects that depend on window size
-                    addMagneticEffect();
+                    // Just update parallax effects on resize
                     resizeTicking = false;
                 });
                 resizeTicking = true;
